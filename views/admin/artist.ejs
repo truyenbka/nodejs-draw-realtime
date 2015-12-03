@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ARTIST MANAGER</title>
+	<% include ../admin/partials/head %>
+</head>
+<body class="container">
+
+	<header>
+		<% include ../admin/partials/header %>
+	</header>
+
+	<main>
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="jumbotron">
+					<table class="table table-hover">
+				      	<thead>
+				        	<tr>
+					          	<th>#</th>
+					          	<th>Username</th>
+					         	<th width="100px">Password</th>
+					          	<th>Action</th>
+				        	</tr>
+				      </thead>
+				      <tbody>
+				      	<% for(var i in artist){ %>
+				        <tr>
+				          <th scope="row"><%= artist[i].id %></th>
+				          <td><%= artist[i].username %></td>
+				          <td><%= artist[i].password %></td>
+				          <td>@</td>
+				        </tr>
+				        <% } %>
+				      </tbody>
+				    </table>
+				</div>
+				
+			</div>
+			<div class="col-sm-3">
+				
+				<div class="well">
+					<h3><span class="fa fa-users"></span> Artist Manager!</h3>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<% include ../admin/partials/footer %>
+	</footer>
+	
+</body>
+</html>

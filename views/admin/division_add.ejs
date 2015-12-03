@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>DIVISION MANAGER</title>
+		<% include ../admin/partials/head %>
+	</head>
+	<body class="container">
+		<header>
+			<% include ../admin/partials/header %>
+		</header>
+		<main>
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="jumbotron" style="min-height:600px">
+					<form action="/admin/division/add" method="post">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th class="col-md-4">Select user</th>
+									<th class="col-md-6">Select image</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								<tr>
+									<td>
+										<select class="form-control" name="idUser" size="10">
+											<% for(var i in users) { %>
+											<option value="<%= users[i].id %>"><%= users[i].username %></option>
+											<% } %>
+										</select>
+									</td>
+									<td align="right">
+										<% for(var i in images) { %>
+										<label class="radio-inline">
+											<input type="radio" name="idImg" value="<%= images[i].id %>"/>
+											<span class="badge"><%= images[i].id %> </span>
+											<img src="<%= images[i].url %>" style="width:50px;"/>
+										</label>
+										<% } %>
+									</td>
+									<td>
+										<script>
+											function myFunction() {
+												alert("Thanks !\nYou updated this image success !");
+											}
+										</script>
+										<button type="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				
+			</div>
+			<div class="col-sm-3">
+				<div class="well">
+					<h3><span class="fa fa-th-list"></span> Division Manager</h3>
+					<a href="/admin/division" class="list-group-item">List</a>
+					<a href="/admin/division/add" class="list-group-item active">Add</a>
+				</div>
+			</div>
+		</div>
+		</main>
+		<footer>
+			<% include ../admin/partials/footer %>
+		</footer>
+		
+	</body>
+</html>

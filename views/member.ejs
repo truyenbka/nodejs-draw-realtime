@@ -1,0 +1,57 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+	<head>
+		<title>Member Page</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/zoom.css">
+		<script src="/js/jquery/jquery-1.9.1.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/zoom.js"></script>
+		<style>
+			body 	{ padding-top:80px; word-wrap:break-word; }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header text-center">
+				<h1><span class="fa fa-github-alt"></span> Member Page</h1>
+
+				<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+			</div>
+			<div class="row">
+				<!-- LOCAL INFORMATION -->
+				<div class="col-sm-6" style="width:100%">
+					<div class="well" style="float:left;width:49%">
+						<h3><span class="fa fa-user"></span> Your Profile</h3>
+						<p>
+							<strong>ID User</strong>: <%= user.id %><br>
+							<strong>Username</strong>: <font size="5"><span class="label label-info"><%= user.username %></span></font><br>
+							<strong>Password</strong>: <%= user.password %><br>
+							<strong>Level</strong>: <%= user.level %>
+						</p>
+					</div>
+					<div class="well" style="float:right;width:49%">
+						<h3><span class="fa fa-picture-o"></span> Your Images</h3>
+						<table class="table table-bordered">
+							<tbody>
+								<% for(var i in images){ %>
+								<tr>
+									<td>
+										<img src="<%= images[i].url %>" width="140" class="img-thumbnail pull-left" data-action="zoom"/>
+									</td>
+									<td>
+										<strong>ID Image: </strong><span class="badge"><%= images[i].id %></span><br>
+										<a href="/draw/<%= images[i].id %>" target="new">CLick here to draw</a>
+									</td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>

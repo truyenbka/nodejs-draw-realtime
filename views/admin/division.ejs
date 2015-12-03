@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>DIVISION MANAGER</title>
+		<% include ../admin/partials/head %>
+	</head>
+	<body class="container">
+		<header>
+			<% include ../admin/partials/header %>
+		</header>
+		<main>
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="jumbotron" style="min-height:600px">
+					<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>#Rel</th>
+									<th>#Img</th>
+									<th>Image</th>
+									<th>Users</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% for(var i in result) { %>
+								<tr>
+									<td>
+										REL<%= result[i].idrel %>
+									</td>
+									<td>
+										IMG<span class="badge"><%= result[i].idimg %></span>
+									</td>
+									<td class="col-sm-4">
+										<img src="<%= result[i].url %>" width="20%" class="img-thumbnail pull-left" data-action="zoom"/>
+									</td>
+									<td>
+										<font size="5px"><span class="label label-info"><%= result[i].username %></span>
+									</td>
+									<td>
+										<script>
+											function myFunction() {
+												alert("You deleted this rel success !");
+											}
+										</script>
+										<a href="/admin/division/delete/<%= result[i].idrel %>"><button type="submit" class="btn btn-danger" onclick="myFunction()">Delete</button></a>
+									</td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+				</div>
+				
+			</div>
+			<div class="col-sm-3">
+				<div class="well">
+					<h3><span class="fa fa-th-list"></span> Division Manager</h3>
+					<a href="/admin/division" class="list-group-item active">List</a>
+					<a href="/admin/division/add" class="list-group-item">Add</a>
+					 
+				</div>
+			</div>
+		</div>
+		</main>
+		<footer>
+			<% include ../admin/partials/footer %>
+		</footer>
+		
+	</body>
+</html>
